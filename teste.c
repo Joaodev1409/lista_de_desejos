@@ -8,7 +8,7 @@ int main(){
     printf("duiasdijanjdia");
     int a;
     if(scanf("%d",&a)==0){
-        printf("receba");
+        printf("neymar");
     }
     return 0;
 }
