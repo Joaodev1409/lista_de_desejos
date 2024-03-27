@@ -5,10 +5,10 @@ int main(){
     printf("teste");
     printf("arthur");
     printf("teste2");
-    printf("duiasdijanjdia");
+    printf("duiasdiwqeqwedsadajanjdia");
     int a;
-    if(scanf("%d",&a)==0){
-        printf("pele e maradona");
+    if(scanf("%d",&a)==0){dasda
+        printf("pele e maradona 3213451232fdsfdsf4545");
     }
     return 0;
 }
