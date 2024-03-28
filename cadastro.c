@@ -30,4 +30,32 @@ void exibe_clientes(cliente *lista) {/*Função para exibir todos os clientes*/
     }
 }
 
+void libera_cliente(cliente *cliente) {
+    free(cliente->nome); // Libera o nome do cliente
+    free(cliente); // Libera o nó do cliente
+}
+
+void libera_lista(cliente *lista) {/*função que percorre toda a lista e libera cada cliente*/
+    cliente *atual = lista;
+    while (atual != NULL) {
+        cliente *proximo = atual->proximo;
+        libera_cliente(atual);
+        atual = proximo;
+    }
+}
+
+/*
+int main() {
+    Cliente *lista = NULL;
+    lista = insere_cliente(lista, "Alice",3245 );
+    lista = insere_cliente(lista, "Bob", 1254);
+    lista = insere_cliente(lista, "Carol", 3451);
+
+    exibe_clientes(lista);
+    libera_lista(lista);
+
+    return 0;
+}
+*/
+
 /*Adicionar "#include 'cadastro.c'" no codigo principal*/
