@@ -44,7 +44,7 @@ void libera_lista(cliente *lista) {/*função que percorre toda a lista e libera
     }
 }
 
-/*
+
 int main() {
     Cliente *lista = NULL;
     lista = insere_cliente(lista, "Alice",3245 );
@@ -56,6 +56,5 @@ int main() {
 
     return 0;
 }
-*/
-
+*
 /*Adicionar "#include 'cadastro.c'" no codigo principal*/
