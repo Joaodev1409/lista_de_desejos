@@ -110,7 +110,7 @@ int main(){
 
 /*
 
----------------> código (feito do 0 por mim😏) que foi corrigido pelo chat GPT <----------------------
+---------------> código da função "Cadastro"(feito do 0 por mim😏) que foi corrigido pelo chat GPT <----------------------
 
 int Cadastro(char r_user, char senha1, char senha2, char login, char senha_final){
 
