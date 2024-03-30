@@ -2,8 +2,10 @@
 #include <string.h>
 
 
-
-int Cadastro(char *r_user, char *senha1, char *senha2, char *login, char *senha_final) { //OBS.: peguntei pro chatGPT pq a função tava dando erro, e ele me disse que essa porra
+// OBS.: Como a função não precisa retornar nenhum valor, 
+// é usadp o "void", o que significa que a função irá 
+// retorna  um valor vazio.
+void Cadastro(char *r_user, char *senha1, char *senha2, char *login, char *senha_final) { //OBS.: peguntei pro chatGPT pq a função tava dando erro, e ele me disse que essa porra
                                                                                         // precisa de ponteiro, eu ainda não sei o q é direito mas aparentemente precisa pois eu
                                                                                         // estou atribuindo e modificando valores de variaveis dentro da função.
 
@@ -17,21 +19,21 @@ int Cadastro(char *r_user, char *senha1, char *senha2, char *login, char *senha_
         
     } else {
         while (1) {
-            printf("As senhas nao correspondem. Tente novamente: \nRegistre sua senha: \n");
+            printf("As senhas nao correspondem, tente novamente.\n \nRegistre sua senha: \n");
             scanf("%s", senha1);
-            printf("Confirme sua senha: \n");
+            printf("\nConfirme sua senha: \n");
             scanf("%s", senha2);
 
             if (strcmp(senha1, senha2) == 0) { // OBS.: no código original eu esqueci de usar o "strcmp()" e usei o "==" direto, e como são 2 strings sendo comparadas, deu erro.
                                                
-                printf("Cadastro realizado com sucesso!\n");
+                printf("\nCadastro realizado com sucesso!\n");
                 strcpy(login, r_user);
                 strcpy(senha_final, senha2);
                 break;
             }
         }
     }
-    return 0;
+    
 }
 
 //teste da função "Cadastro":
@@ -40,13 +42,13 @@ int main(){
 
     char registro_usuario[21], registro_senha1[21], registro_senha2[21], login_usuario[21], login_senha[21];
 
-    printf("Registre seu nome de usuario: \n");
+    printf("\nRegistre seu nome de usuario: \n");
     scanf("%s", registro_usuario);
 
-    printf("Registre sua senha: \n");
+    printf("\nRegistre sua senha: \n");
     scanf("%s", registro_senha1);
 
-    printf("Confirme sua senha: \n");
+    printf("\nConfirme sua senha: \n");
     scanf("%s", registro_senha2);
 
     Cadastro(registro_usuario, registro_senha1, registro_senha2, login_usuario, login_senha);
