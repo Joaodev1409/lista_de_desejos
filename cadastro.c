@@ -46,7 +46,7 @@ void libera_lista(cliente *lista) {/*função que percorre toda a lista e libera
 
 
 int main() {
-    Cliente *lista = NULL;
+    cliente *lista = NULL;
     lista = insere_cliente(lista, "Alice",3245 );
     lista = insere_cliente(lista, "Bob", 1254);
     lista = insere_cliente(lista, "Carol", 3451);
