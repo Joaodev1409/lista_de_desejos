@@ -37,6 +37,12 @@ void Cadastro(char *r_user, char *senha1, char *senha2, char *login, char *senha
     
 }
 
+//  IDEIA ABSTRATA USANDO A FUNÇÃO "Cadastro(...)"":        (31/3/23)
+//  pretendo usar essa função para de alguma forma pegar nome de usuario registrado e transformar em uma espécie ID para pegar os jogos escolhido por ele e armazenar em um  
+// "banco de dados" de forma individual, como a função "Cadastro(...)" só retorna o user e senha quando o registro é bem sucedido, dá pra usar o user registrado como uma "chave" para
+//  acessar uma "celula(?)" específica do "banco de dados". (A ideia de como a gente vai armazenar os jogos e suas informações ainda está sendo discutida, estamos pensando em fazer
+//  um banco de dados fictício para a execução do programa usando SQL, mas caso não dê certo vamos usar um array de caracteres e fazer um "banco de dados" dentro do próprio programa,)
+
 // conceito da função: ver se o user após o login é == "fulano" e o return == 1, se sim, então o acesso do "banco de dados é liberado"
 
 int Login (char *login, char *senha, char *login_final, char *senha_final, int contador){
@@ -73,6 +79,15 @@ int Login (char *login, char *senha, char *login_final, char *senha_final, int c
         }
 }
 }
+
+// IDEIA ABSTRATA USANDO A FUNÇÃO "Login(...)"":         (31/3/23)
+// ja com essa função sera mais simples (eu acho), vou usar o retorno dela para acessar o "banco de dados", na função ela retorna um Int, return 1 se o login for sucedido, e 
+// return 0 se a conta for bloqueada, estou pensando em usar um loop para fazer o acesso das funções manualmente, e implementar outra opção, a "[SAIR]" para quebrar o loop e
+// encerrar o programa, a ideia ainda está meio abstrata mas pretento estudar um pouco sobre funções de OS para limpar o terminal, adicionar timers nas ações e fazer o programa
+// ficar menos "cru" e aparentemente funcional, não tenho a certeza se vamos fazer um front-end de fato, mas enquanto não tenho a resposta, é melhor eu prevendo e previnir futuros
+// atrasos.
+
+
 //teste da função "Cadastro" e "Login":
 
 int main(){
