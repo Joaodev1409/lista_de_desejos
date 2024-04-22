@@ -109,20 +109,37 @@ int Login (char *login, char *senha, char *login_final, char *senha_final, int c
 int main(){
 //                               OBS.: correspondentes da função "Login" -  *login              *senha          *login_final      *senha_final
     char registro_usuario[21], registro_senha1[21], registro_senha2[21], login_usuario[21], login_senha[21], final_usuario[21], final_senha[21];
-    int contador = 0;
+    int contador = 0, opcao;
 
-// CADASTRO:
 
-    Cadastro(registro_usuario, registro_senha1, registro_senha2, login_usuario, login_senha);
-
-// LOGIN (aparentemente tudo funcionando nessa função): 
-
+while(1){
+    printf("[1] - REGISTRAR\n");
+    printf("[2] - LOGIN\n");
     
+    printf("[0] - ENCERRAR PROGRAMA\n");
+    
+    scanf("%d", &opcao);
 
-    Login(login_usuario, login_senha, final_usuario, final_senha, contador);
+    if(opcao == 1){
+        Cadastro(registro_usuario, registro_senha1, registro_senha2, login_usuario, login_senha);
+        contador++;
+        }
 
-    //printf("%s\n%s",login_usuario, login_senha); // confirmação para ver se a função realmente está atribuindo os valores do register no login.
+    if (opcao == 2){
+        if(contador > 0){
+            Login(login_usuario, login_senha, final_usuario, final_senha, contador);
+        } else {
+            printf("Nenhum usuario cadastrado. Voltando para tela inical.\n");
+        }
+        }
 
+    if(opcao == 0){
+        printf("Encerrando programa...\n");
+        break;
+    }
+
+
+    }
     return 0;
 }
 
