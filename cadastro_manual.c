@@ -52,7 +52,7 @@ void Cadastro(char *r_user, char *senha1, char *senha2, char *login, char *senha
 
 // conceito da função: ver se o user após o login é == "fulano" e o return == 1, se sim, então o acesso do "banco de dados é liberado"
 
-int Login (char *login, char *senha, char *login_final, char *senha_final, int contador){
+int Login (char *login, char *senha, char *login_final, char *senha_final, int contador){// esse contador tem q ser uma variavel dentro da função, não? 27/04
 
     printf("\n[LOGIN]\n\nUsuario: \n");
     scanf("%s", login_final);
@@ -64,8 +64,8 @@ int Login (char *login, char *senha, char *login_final, char *senha_final, int c
         printf("Login realizado com sucesso!\n");
         return 1;
 
-    } else {
-        printf("Login ou senha incorretos, voce tem 3 tentativas para tentar logar.\n");
+    } else {//esse while tinha q ta fora desse else,não? pq o else deveria retornar 0 e enquanto for 0 vai pedindo a senha e login dnv 3 vezes
+        printf("Login ou senha incorretos, restam 2 tentativas de login .\n");
         while (1)
         {
             
@@ -113,6 +113,7 @@ int main(){
 
 
 while(1){
+    printf("--------------->BEM-VINDO!!!<---------------");
     printf("[1] - REGISTRAR\n");
     printf("[2] - LOGIN\n");
     
@@ -135,6 +136,9 @@ while(1){
 
     if(opcao == 0){
         printf("Encerrando programa...\n");
+        printf("--------------->   CREDITOS   <---------------");
+        printf("--------------> ARTHUR NICOLAS <--------------");
+        printf("-------------->  JOÃO VICTOR  <---------------");
         break;
     }
 
