@@ -113,7 +113,7 @@ int main(){
 
 
 while(1){
-    printf("--------------->BEM-VINDO!!!<---------------");
+    printf("--------------->BEM-VINDO!!!<---------------\n");
     printf("[1] - REGISTRAR\n");
     printf("[2] - LOGIN\n");
     
@@ -136,9 +136,9 @@ while(1){
 
     if(opcao == 0){
         printf("Encerrando programa...\n");
-        printf("--------------->   CREDITOS   <---------------");
-        printf("--------------> ARTHUR NICOLAS <--------------");
-        printf("-------------->  JOÃO VICTOR  <---------------");
+        printf("--------------->   CREDITOS   <---------------\n");
+        printf("--------------> ARTHUR NICOLAS <--------------\n");
+        printf("-------------->  JOÃO VICTOR  <---------------\n");
         break;
     }
 
