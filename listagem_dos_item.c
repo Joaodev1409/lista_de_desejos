@@ -62,7 +62,7 @@ void imprimir() {
 
 NO* remover(NO **Lista,char elemento){//ainda não atualizei lá no main
     NO *aux,*remover=NULL;
-    if(*Lista){//so o valor dentro do if é equivalente a ta comparando se é = NULL
+    if(*Lista){//se o valor dentro do if é equivalente a ta comparando se é = NULL
         if((*Lista)->dado== elemento){//aq tbm verifica se o dado é NULL
             remover= *Lista;
             *Lista=remover->prox;
