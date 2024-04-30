@@ -60,6 +60,26 @@ void imprimir() {
     printf(" <---FIM\n\n");
 }
 
+NO* remover(NO **Lista,char elemento){//ainda não atualizei lá no main
+    NO *aux,*remover=NULL;
+    if(*Lista){//so o valor dentro do if é equivalente a ta comparando se é = NULL
+        if((*Lista)->dado== elemento){//aq tbm verifica se o dado é NULL
+            remover= *Lista;
+            *Lista=remover->prox;
+        }else{
+            aux=*Lista;
+            while(aux->prox && aux->prox->dado!=elemento){//aq tmb é se é NULL
+                aux= aux->prox;
+            }
+            if(aux->prox){
+                remover=aux->prox;
+                aux->prox=remover->prox;
+            }
+        }
+    }   
+    return remover;
+}
+
 void menu() {
     printf("1- Para inserir no inicio da Lista\n");
     printf("2- Para inserir no fim da Lista\n");
