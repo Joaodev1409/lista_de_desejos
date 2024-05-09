@@ -80,6 +80,10 @@ NO* remover(NO **Lista,char elemento){//ainda não atualizei lá no main
     return remover;
 }
 
+void remover2(char* elemento){// to fazendo aq pq a de cima ta dando erro , vou testar de outra maneira
+    
+}
+
 void menu() {
     printf("1- Para inserir no inicio da Lista\n");
     printf("2- Para inserir no fim da Lista\n");
