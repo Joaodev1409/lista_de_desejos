@@ -83,7 +83,8 @@ NO* remover(NO **Lista,char elemento){//ainda não atualizei lá no main
 void menu() {
     printf("1- Para inserir no inicio da Lista\n");
     printf("2- Para inserir no fim da Lista\n");
-    printf("3- Para imprimir a Lista\n");
+    printf("3- Para remover item da Lista\n");
+    printf("4- Para imprimir a Lista\n");
     printf("0- Para encerrar\n");
 }
 
@@ -112,7 +113,14 @@ int main() {
                 dado[strcspn(dado, "\n")] = 0; // Remove o '\n' do final da string
                 InserirNoFim(dado);
                 break;
-            case 3: //imprimir
+            case 3: //remover
+                printf("Informe o item que deseja remover: ");
+                fgets(dado, 100, stdin);
+                dado[strcspn(dado, "\n")] = 0;
+                remover(&L,dado);
+                imprimir();
+                break;
+            case 4: //imprimir
                 imprimir();
                 break;
         }
