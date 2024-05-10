@@ -11,8 +11,19 @@ struct conta
 
 typedef struct conta Conta;
 
-void Cadastro(Conta *contaPtr)
+Conta* criarConta()
 {
+    Conta* novaConta = (Conta*)malloc(sizeof(Conta));
+    novaConta->user = NULL;
+    novaConta->senha = NULL;
+    novaConta->prox = NULL;
+    return novaConta;
+}
+
+void Cadastro(Conta *inicio)
+{
+    Conta *atual = inicio;
+
     char usuario[20], senha1[20], senha2[20];
 
     printf("======REGISTRO======\n\nRegistre seu nome de usuario:\n");
@@ -27,6 +38,7 @@ void Cadastro(Conta *contaPtr)
         if (strcmp(senha1, senha2) != 0)
         {
             printf("As senhas nao correspondem. Tente de novo:\n");
+            scanf("%s", senha1);
             scanf("%s", senha2);
         }
         else
@@ -36,19 +48,51 @@ void Cadastro(Conta *contaPtr)
         }
     }
 
-    contaPtr->user = malloc(strlen(usuario) + 1);
-    strcpy(contaPtr->user, usuario);
+    atual->user = malloc(strlen(usuario) + 1);
+    strcpy(atual->user, usuario);
 
-    contaPtr->senha = malloc(strlen(senha1) + 1);
-    strcpy(contaPtr->senha, senha1);
+    atual->senha = malloc(strlen(senha1) + 1);
+    strcpy(atual->senha, senha1);
+}
+
+void imprimirContas(Conta *inicio)
+{
+    Conta *atual = inicio;
+
+    while (atual != NULL)
+    {
+        printf("Usuário: %s\nSenha: %s\n\n", atual->user, atual->senha);
+        atual = atual->prox;
+    }
 }
 
 int main()
 {
-    Conta *conta1 = malloc(sizeof(Conta)); 
+    Conta *inicio = NULL;
+    Conta *atual;
 
-    Cadastro(conta1);
-    printf("%s\n%s", conta1->user, conta1->senha);
+    char continuar;
 
+    do
+    {
+        if (inicio == NULL)
+        {
+            inicio = criarConta();
+            atual = inicio;
+        }
+        else
+        {
+            atual->prox = criarConta();
+            atual = atual->prox;
+        }
+
+        Cadastro(atual);
+
+        printf("Deseja adicionar outro registro? (s/n): ");
+        scanf(" %c", &continuar);
+    } while (continuar == 's');
+
+    printf("\n======= REGISTROS =======\n\n");
+    imprimirContas(inicio);
     return 0;
 }
