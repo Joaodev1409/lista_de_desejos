@@ -60,29 +60,32 @@ void imprimir() {
     printf(" <---FIM\n\n");
 }
 
-NO* remover(NO **Lista,char elemento){//ainda não atualizei lá no main
-    NO *aux,*remover=NULL;
-    if(*Lista){//se o valor dentro do if é equivalente a ta comparando se é = NULL
-        if((*Lista)->dado== elemento){//aq tbm verifica se o dado é NULL
-            remover= *Lista;
-            *Lista=remover->prox;
-        }else{
-            aux=*Lista;
-            while(aux->prox && aux->prox->dado!=elemento){//aq tmb é se é NULL
-                aux= aux->prox;
+
+void remover2(Lista *l){
+    NO *aux, *prev = NULL;
+    aux = l -> inicio;
+    if( aux == NULL ){
+        printf(" Lista vazia !!! ");
+    }else{
+        char remover[100];
+        printf("Informe o jogo a ser removido: ");
+        scanf( "%s" , remover );
+        while ( aux != NULL ){
+            if( strcmp(remover , aux -> dado) == 0){
+                if(aux == l -> inicio){
+                    l -> inicio = aux -> prox;
+                }else{
+                    prev -> prox = aux -> prox;
+                }
+                free(aux);
+                break;
             }
-            if(aux->prox){
-                remover=aux->prox;
-                aux->prox=remover->prox;
-            }
+            prev = aux;
+            aux = aux -> prox;
         }
-    }   
-    return remover;
+    }
 }
 
-void remover2(char* elemento){// to fazendo aq pq a de cima ta dando erro , vou testar de outra maneira
-    
-}
 
 void menu() {
     printf("1- Para inserir no inicio da Lista\n");
@@ -117,12 +120,8 @@ int main() {
                 dado[strcspn(dado, "\n")] = 0; // Remove o '\n' do final da string
                 InserirNoFim(dado);
                 break;
-            case 3: //remover
-                printf("Informe o item que deseja remover: ");
-                fgets(dado, 100, stdin);
-                dado[strcspn(dado, "\n")] = 0;
-                remover(&L,dado);
-                imprimir();
+            case 3:
+                remover2(&L);
                 break;
             case 4: //imprimir
                 imprimir();
