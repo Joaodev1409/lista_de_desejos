@@ -52,9 +52,9 @@ void InserirNoFim(char* elemento) {
 
 void imprimir() {
     NO* ptr = L.inicio;
-    printf("INICIO---> ");
+    printf("INICIO--->\n ");
     while(ptr != NULL){
-        printf("%s ", ptr->dado);
+        printf("%s \n", ptr->dado);
         ptr = ptr->prox;
     }
     printf(" <---FIM\n\n");
