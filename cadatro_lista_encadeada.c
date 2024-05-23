@@ -53,10 +53,18 @@ void Cadastro(Conta *conta) {
     }
 
     conta->user = malloc(strlen(usuario) + 1);
+    if (conta->user == NULL) {
+        printf("Erro ao alocar memória para o usuário\n");
+        exit(1);
+    }
     strcpy(conta->user, usuario);
 
     SenhaNode *novaSenha = criarSenhaNode();
     novaSenha->senha = malloc(strlen(senha1) + 1);
+    if (novaSenha->senha == NULL) {
+        printf("Erro ao alocar memória para a senha\n");
+        exit(1);
+    }
     strcpy(novaSenha->senha, senha1);
 
     if (conta->senhas == NULL) {
@@ -69,6 +77,7 @@ void Cadastro(Conta *conta) {
         atualSenha->prox = novaSenha;
     }
 }
+
 
 void imprimirContas(Conta *inicio) {
     Conta *atual = inicio;
