@@ -3,32 +3,21 @@
 #include "cadatro_lista_encadeada.c"
 #include "listagem_dos_itens.c"
 
-void criar_banco_txt(Conta *conta,NO *dado){
+void criar_banco_txt(Conta *conta,const char *dado){
     char filename[60];
-    sprintf(filename,"%s_lista de desejos.txt",conta->user);
-    FILE* file=fopen(filename,"w");
-    NO* lista=dado->dado;
-    while(lista!=NULL){
-        fprintf(file,"%s\n",lista->dado);
-        lista= lista->prox;
+    sprintf(filename,"%s_lista_de_desejos.txt",conta->user);
+    FILE* file=fopen(filename,"a");
+    if(file==NULL){
+        printf("Erro ao criar banco de dados do usuario\n");
+        return;
     }
+    fprintf(file,"%s\n",dado);
     fclose(file);
 }
 
-void adicionar_ao_banco_de_dados(Conta *conta,NO *dado){
-    char filename[60];
-    sprintf(filename,"%s_lista de desejos.txt",conta->user);
-    FILE* file=fopen(filename,"a");
-    NO* lista=dado->dado;
-    while(lista!=NULL){
-        fprintf(file,"%s\n",lista->dado);
-        lista= lista->prox;
-    }
-    fclose(file);
-}
 
 int main(){
-   /*Conta *inicio = NULL;
+    Conta *inicio = NULL;
     Conta *atual;
     char continuar;
     int opcao;
@@ -39,7 +28,7 @@ int main(){
     do {
         if (inicio == NULL) {
             inicio = criarConta();
-            banco_txt(inicio,dado);
+            criar_banco_txt(inicio,dado);
             atual = inicio;
         } else {
             atual->prox = criarConta();
@@ -84,14 +73,14 @@ int main(){
                 fgets(dado, 100, stdin);
                 dado[strcspn(dado, "\n")] = 0; // Remove o '\n' do final da string
                 InserirNoInicio(dado);
-                adicionar_ao_banco_de_dados(inicio,dado);
+                criar_banco_txt(inicio,dado);
                 break;
             case 2: //inserir no fim
                 printf("Informe o nome do Jogo: ");
                 fgets(dado, 100, stdin);
                 dado[strcspn(dado, "\n")] = 0; // Remove o '\n' do final da string
                 InserirNoFim(dado);
-                adicionar_ao_banco_de_dados(inicio,dado);
+                criar_banco_txt(inicio,dado);
                 break;
             case 3:
                 remover2(&L);
@@ -101,10 +90,7 @@ int main(){
                 break;
         }
     } while(opcao != 0);
-    */
-
-
-
+    
 
     return 0;
 }

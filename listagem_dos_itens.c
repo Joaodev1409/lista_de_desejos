@@ -95,7 +95,7 @@ void menu() {
     printf("0- Para encerrar\n");
 }
 
-int main() {
+/*int main() {
     int opcao;
     char dado[100];
     L.inicio = NULL;//sempre o inicio e o fim tem q ta inicializado em NULL
@@ -131,3 +131,4 @@ int main() {
     
     return 0;
 }
+*/

@@ -84,7 +84,7 @@ void imprimirContas(Conta *inicio) {
     }
 }
 
-int main() {
+/*int main() {
     Conta *inicio = NULL;
     Conta *atual;
     char continuar;
@@ -125,3 +125,4 @@ int main() {
 
     return 0;
 }
+*/
