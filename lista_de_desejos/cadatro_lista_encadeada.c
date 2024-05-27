@@ -16,7 +16,7 @@ struct conta {
 typedef struct conta Conta;
 typedef struct senhaNode SenhaNode;
 
-Conta* criarConta() {
+Conta* criarConta() { 
     Conta* novaConta = (Conta*)malloc(sizeof(Conta));
     novaConta->user = NULL;
     novaConta->prox = NULL;
@@ -44,7 +44,9 @@ void Cadastro(Conta *conta) {
     while (1) {
         if (strcmp(senha1, senha2) != 0) {
             printf("As senhas nao correspondem. Tente de novo:\n");
+            printf("Registre sua senha:\n");
             scanf("%s", senha1);
+            printf("Confirme sua senha:\n");
             scanf("%s", senha2);
         } else {
             printf("Registro efetuado!\n");
@@ -78,7 +80,6 @@ void Cadastro(Conta *conta) {
     }
 }
 
-
 void imprimirContas(Conta *inicio) {
     Conta *atual = inicio;
     while (atual != NULL) {
@@ -93,7 +94,25 @@ void imprimirContas(Conta *inicio) {
     }
 }
 
-/*int main() {
+int Login(Conta *inicio, const char *usuario, const char *senha) {
+    Conta *atual = inicio;
+    while (atual != NULL) {
+        if (strcmp(atual->user, usuario) == 0) {
+            SenhaNode *senhaAtual = atual->senhas;
+            while (senhaAtual != NULL) {
+                if (strcmp(senhaAtual->senha, senha) == 0) {
+                    return 1; // Login bem-sucedido
+                }
+                senhaAtual = senhaAtual->prox;
+            }
+        }
+        atual = atual->prox;
+    }
+    return 0; // Falha no login
+}
+
+int main() {
+
     Conta *inicio = NULL;
     Conta *atual;
     char continuar;
@@ -116,6 +135,19 @@ void imprimirContas(Conta *inicio) {
     printf("\n======= REGISTROS =======\n\n");
     imprimirContas(inicio);
 
+    // Tentar login
+    char usuario[20], senha[20];
+    printf("======LOGIN======\n\nDigite seu nome de usuario:\n");
+    scanf("%s", usuario);
+    printf("Digite sua senha:\n");
+    scanf("%s", senha);
+
+    if (Login(inicio, usuario, senha)) {
+        printf("Login bem-sucedido!\n");
+    } else {
+        printf("Falha no login! Usuario ou senha incorretos.\n");
+    }
+
     Conta *contaAtual = inicio;
     while (contaAtual != NULL) {
         Conta *contaParaLiberar = contaAtual;
@@ -134,4 +166,3 @@ void imprimirContas(Conta *inicio) {
 
     return 0;
 }
-*/
