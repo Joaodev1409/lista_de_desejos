@@ -59,16 +59,23 @@ int main() {
             switch (opcao) {
                 case 1:
                     limparTerminal();
-                    printf("Informe o nome do jogo para inserir no inicio: ");
+                    printf("Informe o nome do jogo para inserir no inicio, nao use espaços: ");
                     scanf("%s", jogo);
-                    inserirNoInicio(jogo);
+                    printf("Informe o preco do jogo: ");
+                    char preco_str[20]; 
+                    float preco; 
+                    scanf("%s", preco_str);
+                    preco = atof(preco_str);
+                    inserirNoInicio(jogo, preco);
                     salvarEmArquivo(usuarioLogado);
                     break;
                 case 2:
                     limparTerminal();
-                    printf("Informe o nome do jogo para inserir no fim: ");
+                    printf("Informe o nome do jogo para inserir no fim, nao use espaços: ");
                     scanf("%s", jogo);
-                    inserirNoFim(jogo);
+                    printf("Informe o preco do jogo: ");
+                    scanf("%f", &preco);
+                    inserirNoFim(jogo, preco);
                     salvarEmArquivo(usuarioLogado);
                     break;
                 case 3:

@@ -117,6 +117,7 @@ int login(Conta *inicio, const char *usuario, const char *senha, char *usuarioLo
 
 typedef struct NO {
     char dado[100];
+    float preco;
     struct NO* prox;
 } NO;
 
@@ -127,13 +128,14 @@ typedef struct lista {
 
 Lista L = {NULL, NULL};
 
-void inserirNoInicio(char* elemento) {
+void inserirNoInicio(char* elemento, float preco) {
     NO *ptr = (NO*)malloc(sizeof(NO));
     if(ptr == NULL){
         printf("erro de alocacao\n");
         exit(0);
     } else {
         strcpy(ptr->dado, elemento);
+        ptr->preco = preco; 
         ptr->prox = NULL;
         
         if(L.inicio == NULL){
@@ -145,13 +147,15 @@ void inserirNoInicio(char* elemento) {
     }
 }
 
-void inserirNoFim(char* elemento) {
+
+void inserirNoFim(char* elemento, float preco) {
     NO *ptr = (NO*)malloc(sizeof(NO));
     if(ptr == NULL){
         printf("Erro de Alocação!!!\n");
         exit(0);
     } else {
         strcpy(ptr->dado, elemento);
+        ptr->preco = preco; 
         ptr->prox = NULL;
 
         if(L.inicio == NULL){
@@ -167,7 +171,7 @@ void imprimirLista() {
     NO* ptr = L.inicio;
     printf("Sua Wishlist: \n\n");
     while(ptr != NULL){
-        printf("%s\n", ptr->dado);
+        printf("%s - Preço: R$ %.2f\n", ptr->dado, ptr->preco); 
         ptr = ptr->prox;
     }
 }
@@ -220,7 +224,7 @@ void salvarEmArquivo(const char* usuario) {
 
     NO* ptr = L.inicio;
     while (ptr != NULL) {
-        fprintf(arquivo, "%s\n", ptr->dado);
+        fprintf(arquivo, "%s - Preço: R$ %.2f\n", ptr->dado, ptr->preco); 
         ptr = ptr->prox;
     }
 
